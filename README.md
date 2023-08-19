@@ -29,15 +29,25 @@ graphql_flutter: ^5.1.2   //For using graphQL API
 
 ```
 lib/
-├── app/
-│   ├── graphql/
-│   │   └── queries.dart
-│   ├── model/
-│   │   └── pokemon_model.dart
-│   ├── pages/
-│   │   ├── detail_page.dart
-│   │   └── home_page.dart
-│   └── widgets/
-│       └── fetch_more_widget.dart
+├── core/
+│   ├── config/
+│   │   └── graphql_config.dart
+│   └── const/
+│       └── color.dart
+├── features/
+│   ├── conference/
+│   │   ├── models/
+│   │   │   └── conference_model.dart
+│   │   ├── pages/
+│   │   │   ├── tabs/
+│   │   │   ├── conference_detail_page.dart
+│   │   │   └── conference_page.dart
+│   │   ├── services/
+│   │   └── widgets/
+│   └── sponsor/
+│       └── page/
+│           └── sponsors_page.dart
+├── routing/
+│   └── bottom_nav_bar.dart
 └── main.dart
 ```

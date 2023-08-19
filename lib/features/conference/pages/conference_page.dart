@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:react_conf/const/color.dart';
+import 'package:react_conf/core/const/color.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ConferencePage extends StatelessWidget {
+  final Widget appBarTitle;
+  const ConferencePage({
+    Key? key,
+    required this.appBarTitle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: AppColors.kVeryLightGray,
-        title: Image.asset(
-          'assets/images/logo_black.png',
-          height: 48,
-        ),
+        title: appBarTitle,
       ),
       body: const Center(
         child: Column(
