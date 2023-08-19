@@ -29,14 +29,16 @@ class SponsorPage extends StatelessWidget {
         child: SingleChildScrollView(
           controller: null,
           physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              SvgPicture.asset('assets/sponsors/gold_sponsor.svg'),
-              const SizedBox(height: 16),
-              SvgPicture.asset('assets/sponsors/silver_sponsors.svg'),
-              const SizedBox(height: 16),
-              SvgPicture.asset('assets/sponsors/bronze_sponsors.svg'),
-            ],
+          child: Center(
+            child: Column(
+              children: [
+                SvgPicture.asset('assets/sponsors/gold_sponsor.svg'),
+                const SizedBox(height: 16),
+                SvgPicture.asset('assets/sponsors/silver_sponsors.svg'),
+                const SizedBox(height: 16),
+                SvgPicture.asset('assets/sponsors/bronze_sponsors.svg'),
+              ],
+            ),
           ),
         ),
       ),

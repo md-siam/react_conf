@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import '../core/const/color.dart';
@@ -17,8 +18,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     ConferencePage(
-      appBarTitle: Image.asset(
-        'assets/images/logo_black.png',
+      appBarTitle: SvgPicture.asset(
+        'assets/images/app_title.svg',
         height: 48,
       ),
     ),
