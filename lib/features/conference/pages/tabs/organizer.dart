@@ -4,7 +4,7 @@ import '../../models/conference_detail_model.dart';
 
 class Organizer extends StatelessWidget {
   final List<ConferenceDetailModel>? queryData;
-  const Organizer({Key? key, required this.queryData}) : super(key: key);
+  const Organizer({Key? key, this.queryData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

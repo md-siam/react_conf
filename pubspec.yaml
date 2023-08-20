@@ -39,6 +39,8 @@ dependencies:
   google_fonts: ^5.1.0
   # For displaying time line
   timeline_tile: ^2.0.0
+  # For launching website into the app
+  url_launcher: ^6.1.12
   # For icons
   material_symbols_icons: ^4.2668.0
   # For rendering svg files
@@ -47,6 +49,7 @@ dependencies:
   graphql_flutter: ^5.1.2
   # For DateTime conversion
   intl: ^0.18.1
+
 
 dev_dependencies:
   flutter_test:
@@ -85,6 +88,7 @@ flutter:
   assets:
     - assets/images/
     - assets/sponsors/
+    - assets/speakers/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

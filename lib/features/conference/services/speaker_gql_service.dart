@@ -3,13 +3,13 @@ import 'dart:developer';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../../core/config/graphql_config.dart';
-import '../models/conference_detail_model.dart';
+import '../models/speaker_model.dart';
 
-class ConfDetailPageGraphQLService {
+class SpeakerGraphQLService {
   static GraphQLConfig graphQLConfig = GraphQLConfig();
   GraphQLClient client = graphQLConfig.clientToQuery();
 
-  Future<List<ConferenceDetailModel>> getConference(String confId) async {
+  Future<List<SpeakerModel>> getConference(String confId) async {
     try {
       QueryResult result = await client.query(
         QueryOptions(
@@ -18,25 +18,20 @@ class ConfDetailPageGraphQLService {
             """
             query PageQuery(\$conferenceId: ID!) {
               conference(id: \$conferenceId) {
-                schedules {
-                  day
-                  description
-                  intervals {
-                    begin
-                    end
-                    title
-                    sessions {
-                      type
-                      title
-                      description
-
-                      people {
-                        name
-                        image {
-                          url
-                        }
-                      }
-                    }
+                speakers {
+                  name
+                  about
+                  social {
+                    homepage
+                    github
+                    twitter
+                    linkedin
+                  }
+                  image {
+                    url
+                  }
+                  country {
+                    code
                   }
                 }
               }
@@ -52,19 +47,19 @@ class ConfDetailPageGraphQLService {
       if (result.hasException) {
         throw Exception(result.exception);
       } else {
-        List? res = result.data?['conference']['schedules'];
+        List? res = result.data?['conference']['speakers'];
 
         //
-        // print(result.data?['conference']['schedules']);
+        // print(result.data?['conference']['speakers']);
         //
 
         if (res == null || res.isEmpty) {
           return [];
         }
 
-        List<ConferenceDetailModel> conferencesData = res
-            .map((conferenceData) =>
-                ConferenceDetailModel.fromJson(json: conferenceData))
+        List<SpeakerModel> conferencesData = res
+            .map(
+                (conferenceData) => SpeakerModel.fromJson(json: conferenceData))
             .toList();
 
         return conferencesData;

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/const/app_color.dart';
 import '../../../core/const/text_style.dart';
-import '../models/conference_detail_model.dart';
-import '../services/conf_detail_page_gql_service.dart';
+import '../models/speaker_model.dart';
+import '../services/speaker_gql_service.dart';
 import 'tabs/organizer.dart';
 import 'tabs/schedule.dart';
 import 'tabs/speaker.dart';
@@ -23,21 +23,21 @@ class ConferenceDetailPage extends StatefulWidget {
 }
 
 class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
-  final ConfDetailPageGraphQLService _graphQLService =
-      ConfDetailPageGraphQLService();
+  final SpeakerGraphQLService _speakerGraphQLService = SpeakerGraphQLService();
 
-  List<ConferenceDetailModel>? _queryData;
+  List<SpeakerModel>? _speakersData;
 
   @override
   void initState() {
     super.initState();
     log('conferenceId: ${widget.conferenceId}');
-    _load();
+    _loadSpeakersData();
   }
 
-  Future<void> _load() async {
-    _queryData = null;
-    _queryData = await _graphQLService.getConference(widget.conferenceId);
+  Future<void> _loadSpeakersData() async {
+    _speakersData = null;
+    _speakersData =
+        await _speakerGraphQLService.getConference(widget.conferenceId);
     setState(() {});
   }
 
@@ -45,7 +45,9 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
+      initialIndex: 1,
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
           centerTitle: false,
@@ -92,16 +94,16 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
               ),
             ),
             Expanded(
-              child: _queryData == null
+              child: _speakersData == null
                   ? const Center(
                       child: CircularProgressIndicator(),
                     )
                   : TabBarView(
                       children: [
-                        Organizer(queryData: _queryData),
-                        Speaker(queryData: _queryData),
-                        Schedule(queryData: _queryData),
-                        Sponsor(queryData: _queryData),
+                        Organizer(),
+                        Speaker(queryData: _speakersData),
+                        Schedule(),
+                        Sponsor(),
                       ],
                     ),
             ),

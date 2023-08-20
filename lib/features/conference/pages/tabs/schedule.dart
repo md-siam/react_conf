@@ -4,7 +4,7 @@ import '../../models/conference_detail_model.dart';
 
 class Schedule extends StatelessWidget {
   final List<ConferenceDetailModel>? queryData;
-  const Schedule({Key? key, required this.queryData}) : super(key: key);
+  const Schedule({Key? key, this.queryData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
