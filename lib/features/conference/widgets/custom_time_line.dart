@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
-import '../../../core/const/color.dart';
+import '../../../core/const/app_color.dart';
 
 class CustomTimeLine extends StatelessWidget {
   final bool isFirst;

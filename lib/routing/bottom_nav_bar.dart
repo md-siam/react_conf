@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
-import '../core/const/color.dart';
+import '../core/const/app_color.dart';
 import '../features/conference/pages/conference_page.dart';
 import '../features/sponsor/page/sponsor_page.dart';
 

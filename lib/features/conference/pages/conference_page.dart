@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/const/color.dart';
+import '../../../core/const/app_color.dart';
 import '../models/conference_model.dart';
 import '../services/conf_page_gql_service.dart';
 import '../widgets/custom_conf_card.dart';

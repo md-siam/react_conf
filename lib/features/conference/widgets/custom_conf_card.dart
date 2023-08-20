@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
-import '../../../core/const/color.dart';
+import '../../../core/const/app_color.dart';
 
 class CustomConfCard extends StatelessWidget {
   final String day;

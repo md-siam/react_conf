@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:react_conf/core/const/color.dart';
+import 'package:react_conf/core/const/app_color.dart';
 
 /// TextStyle for different types of [Header]
 ///

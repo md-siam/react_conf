@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'core/const/color.dart';
+import 'core/const/app_color.dart';
 import 'routing/bottom_nav_bar.dart';
 
 void main() {

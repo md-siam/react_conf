@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../../../core/const/color.dart';
+import '../../../core/const/app_color.dart';
 import '../../../core/const/text_style.dart';
 import 'tabs/organizer.dart';
 import 'tabs/schedule.dart';
