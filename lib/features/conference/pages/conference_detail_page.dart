@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
+import '../../../core/const/color.dart';
+import '../../../core/const/text_style.dart';
 import 'tabs/organizer.dart';
 import 'tabs/schedule.dart';
 import 'tabs/speaker.dart';
 import 'tabs/sponsor.dart';
-
-import '../../../core/const/color.dart';
 
 class ConferenceDetailPage extends StatefulWidget {
   const ConferenceDetailPage({Key? key}) : super(key: key);
@@ -29,33 +30,23 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
           centerTitle: false,
           backgroundColor: AppColors.kVeryLightGray,
           iconTheme: const IconThemeData(color: AppColors.kBlack),
-          title: const Text(
+          title: Text(
             'Conference Info',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w700,
-              color: AppColors.kDeepBlue,
-            ),
+            style: appBarHeaderTStyle,
           ),
         ),
-        body: const Column(
+        body: Column(
           children: [
             Material(
               elevation: 10,
               child: TabBar(
                 indicatorWeight: 3.0,
                 labelColor: AppColors.kYellow,
-                labelStyle: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
+                labelStyle: selectedTabTStyle,
                 unselectedLabelColor: AppColors.kDeepGray,
-                unselectedLabelStyle: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
+                unselectedLabelStyle: unSelectedTabTStyle,
                 indicatorColor: AppColors.kYellow,
-                tabs: [
+                tabs: const [
                   Tab(
                     icon: FittedBox(
                       child: Text('Organizer'),
@@ -79,7 +70,7 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
                 ],
               ),
             ),
-            Expanded(
+            const Expanded(
               child: TabBarView(
                 children: [
                   Organizer(),
@@ -88,7 +79,7 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
                   Sponsor(),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

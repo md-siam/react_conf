@@ -24,7 +24,7 @@ class ConferencePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Conference'),
+            const Text('Conference'),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -33,7 +33,7 @@ class ConferencePage extends StatelessWidget {
                       builder: (context) => const ConferenceDetailPage()),
                 );
               },
-              child: Text('Press'),
+              child: const Text('Press'),
             ),
           ],
         ),

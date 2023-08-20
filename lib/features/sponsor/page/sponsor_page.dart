@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:react_conf/core/const/color.dart';
 
+import '../../../core/const/text_style.dart';
 import '../widgets/sponsor_card.dart';
 
 class SponsorPage extends StatelessWidget {
@@ -19,11 +20,7 @@ class SponsorPage extends StatelessWidget {
         backgroundColor: AppColors.kVeryLightGray,
         title: Text(
           appBarTitle,
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-            color: AppColors.kDeepBlue,
-          ),
+          style: appBarHeaderTStyle,
         ),
       ),
       body: Padding(
