@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -40,21 +39,31 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 10,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Symbols.today, size: 26),
-            label: 'Conference',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Symbols.campaign, size: 36),
-            label: 'Sponsors',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: AppColors.kYellow,
-        onTap: _onItemTapped,
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black54,
+              blurRadius: 10.0,
+              offset: Offset(0.0, 0.60),
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Symbols.today, size: 26),
+              label: 'Conference',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Symbols.campaign, size: 36),
+              label: 'Sponsors',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: AppColors.kYellow,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }
