@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   # For fonts
   google_fonts: ^5.1.0
+  # For displaying time line
+  timeline_tile: ^2.0.0
   # For icons
   material_symbols_icons: ^4.2668.0
   # For rendering svg files

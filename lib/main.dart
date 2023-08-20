@@ -6,8 +6,8 @@ import 'core/const/color.dart';
 import 'routing/bottom_nav_bar.dart';
 
 void main() {
-  // For disabling landscape view
   WidgetsFlutterBinding.ensureInitialized();
+  // For disabling landscape view
   SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );

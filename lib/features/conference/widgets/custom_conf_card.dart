@@ -30,11 +30,23 @@ class CustomConfCard extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Container(
-          width: 300,
+          height: 5.0,
+          decoration: const BoxDecoration(
+            color: AppColors.kYellow,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+          ),
+        ),
+        Container(
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: AppColors.kVeryLightGray,
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.2),

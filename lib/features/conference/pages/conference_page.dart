@@ -1,13 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:react_conf/core/const/color.dart';
 
-import '../../../core/repository/timeline_tile/src/tile.dart';
+import '../../../core/const/color.dart';
 import '../models/conference_model.dart';
 import '../services/conf_page_gql_service.dart';
 import '../widgets/custom_conf_card.dart';
+import '../widgets/custom_time_line.dart';
 import 'conference_detail_page.dart';
 
 class ConferencePage extends StatefulWidget {
@@ -40,51 +38,42 @@ class _ConferencePageState extends State<ConferencePage> {
 
   @override
   Widget build(BuildContext context) {
-    //
-    // print(_conferences.);
-    //
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.kVeryLightGray,
         title: widget.appBarTitle,
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                CupertinoPageRoute(
-                    builder: (context) => const ConferenceDetailPage()),
-              );
-            },
-            child: const Text('Detail\nPage'),
-          ),
-        ],
       ),
       body: _queryData == null
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.separated(
-              padding: const EdgeInsets.all(24),
+          : ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.only(left: 16, right: 24, bottom: 40),
               itemCount: _queryData!.length,
-              separatorBuilder: (BuildContext context, int index) =>
-                  _queryData![index].conferences.isEmpty
-                      ? const SizedBox.shrink()
-                      : const SizedBox(height: 40),
               itemBuilder: (BuildContext context, int index) {
                 return _queryData![index].conferences.isEmpty
                     ? const SizedBox.shrink()
-                    : Row(
-                        children: [
-                          // TimelineTile(),
-                          GestureDetector(
-                            onTap: () {
-                              //
-                              log('id: ${_queryData![index].conferences[0].id}');
-                              //
-                            },
+                    : CustomTimeLine(
+                        isFirst: index == 0 ? true : false,
+                        isLast:
+                            index == (_queryData!.length - 1) ? true : false,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => ConferenceDetailPage(
+                                  conferenceId:
+                                      _queryData![index].conferences[0].id,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 40),
                             child: CustomConfCard(
                               day: _queryData![index]
                                   .conferences[0]
@@ -93,7 +82,7 @@ class _ConferencePageState extends State<ConferencePage> {
                               name: _queryData![index].conferences[0].name,
                             ),
                           ),
-                        ],
+                        ),
                       );
               },
             ),

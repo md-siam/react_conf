@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../../../core/const/color.dart';
@@ -8,7 +10,11 @@ import 'tabs/speaker.dart';
 import 'tabs/sponsor.dart';
 
 class ConferenceDetailPage extends StatefulWidget {
-  const ConferenceDetailPage({Key? key}) : super(key: key);
+  final String conferenceId;
+  const ConferenceDetailPage({
+    Key? key,
+    required this.conferenceId,
+  }) : super(key: key);
 
   @override
   State<ConferenceDetailPage> createState() => _ConferenceDetailPageState();
@@ -18,6 +24,7 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
   @override
   void initState() {
     super.initState();
+    log(widget.conferenceId);
   }
 
   @override
