@@ -9,7 +9,10 @@ class SponsorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SvgPicture.asset('assets/sponsors/$cardName'),
+        SvgPicture.asset(
+          'assets/sponsors/$cardName',
+          width: MediaQuery.of(context).size.width - 24,
+        ),
         const SizedBox(height: 16),
       ],
     );
