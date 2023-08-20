@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../models/conference_detail_model.dart';
+
 class Sponsor extends StatelessWidget {
-  const Sponsor({Key? key}) : super(key: key);
+  final List<ConferenceDetailModel>? queryData;
+  const Sponsor({Key? key, required this.queryData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

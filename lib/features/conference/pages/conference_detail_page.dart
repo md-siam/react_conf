@@ -92,29 +92,19 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
               ),
             ),
             Expanded(
-                child: _queryData == null
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : Card(
-                        child: Column(
-                          children: [
-                            Text(_queryData!.length.toString()),
-                            // Text(_queryData![0].description),
-                            // Text(_queryData![0].intervals[0].begin),
-                          ],
-                        ),
-                      )
-
-                // const TabBarView(
-                //     children: [
-                //       Organizer(),
-                //       Speaker(),
-                //       Schedule(),
-                //       Sponsor(),
-                //     ],
-                //   ),
-                ),
+              child: _queryData == null
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : TabBarView(
+                      children: [
+                        Organizer(queryData: _queryData),
+                        Speaker(queryData: _queryData),
+                        Schedule(queryData: _queryData),
+                        Sponsor(queryData: _queryData),
+                      ],
+                    ),
+            ),
           ],
         ),
       ),
