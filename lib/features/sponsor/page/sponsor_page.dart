@@ -32,13 +32,13 @@ class SponsorPage extends StatelessWidget {
             child: Column(
               children: [
                 SponsorCard(
-                  imageLink: 'gold_sponsor.svg',
+                  cardName: 'gold_sponsor.svg',
                 ),
                 SponsorCard(
-                  imageLink: 'silver_sponsors.svg',
+                  cardName: 'silver_sponsors.svg',
                 ),
                 SponsorCard(
-                  imageLink: 'bronze_sponsors.svg',
+                  cardName: 'bronze_sponsors.svg',
                 ),
               ],
             ),
