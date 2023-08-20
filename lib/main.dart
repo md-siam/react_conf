@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: false,
+        splashColor: AppColors.kYellow.withOpacity(0.20),
         textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme),
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.kYellow),
       ),

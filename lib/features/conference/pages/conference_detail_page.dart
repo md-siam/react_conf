@@ -14,12 +14,15 @@ class ConferenceDetailPage extends StatefulWidget {
 }
 
 class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
-  int initialIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
-      initialIndex: initialIndex,
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -35,86 +38,48 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
             ),
           ),
         ),
-        body: Column(
+        body: const Column(
           children: [
             Material(
               elevation: 10,
               child: TabBar(
+                indicatorWeight: 3.0,
+                labelColor: AppColors.kYellow,
+                labelStyle: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
+                unselectedLabelColor: AppColors.kDeepGray,
+                unselectedLabelStyle: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
                 indicatorColor: AppColors.kYellow,
-                onTap: (int newIndex) {
-                  setState(() {
-                    initialIndex = newIndex;
-                  });
-                },
                 tabs: [
                   Tab(
                     icon: FittedBox(
-                      child: Text(
-                        'Organizer',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: initialIndex == 0
-                              ? AppColors.kYellow
-                              : AppColors.kDeepGray,
-                          fontWeight: initialIndex == 0
-                              ? FontWeight.w700
-                              : FontWeight.w400,
-                        ),
-                      ),
+                      child: Text('Organizer'),
                     ),
                   ),
                   Tab(
                     icon: FittedBox(
-                      child: Text(
-                        'Speakers',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: initialIndex == 1
-                              ? AppColors.kYellow
-                              : AppColors.kDeepGray,
-                          fontWeight: initialIndex == 1
-                              ? FontWeight.w700
-                              : FontWeight.w400,
-                        ),
-                      ),
+                      child: Text('Speakers'),
                     ),
                   ),
                   Tab(
                     icon: FittedBox(
-                      child: Text(
-                        'Schedule',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: initialIndex == 2
-                              ? AppColors.kYellow
-                              : AppColors.kDeepGray,
-                          fontWeight: initialIndex == 2
-                              ? FontWeight.w700
-                              : FontWeight.w400,
-                        ),
-                      ),
+                      child: Text('Schedule'),
                     ),
                   ),
                   Tab(
                     icon: FittedBox(
-                      child: Text(
-                        'Sponsors',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: initialIndex == 3
-                              ? AppColors.kYellow
-                              : AppColors.kDeepGray,
-                          fontWeight: initialIndex == 3
-                              ? FontWeight.w700
-                              : FontWeight.w400,
-                        ),
-                      ),
+                      child: Text('Sponsors'),
                     ),
                   ),
                 ],
               ),
             ),
-            const Expanded(
+            Expanded(
               child: TabBarView(
                 children: [
                   Organizer(),
