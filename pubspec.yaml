@@ -35,8 +35,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  # For displaying timeline widget
-  timeline_tile: ^2.0.0
   # For fonts
   google_fonts: ^5.1.0
   # For icons

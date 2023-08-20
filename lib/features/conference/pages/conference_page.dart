@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:react_conf/core/const/color.dart';
 
+import '../../../core/repository/timeline_tile/src/tile.dart';
 import '../models/conference_model.dart';
 import '../services/conf_page_gql_service.dart';
 import '../widgets/custom_conf_card.dart';
@@ -75,19 +76,24 @@ class _ConferencePageState extends State<ConferencePage> {
               itemBuilder: (BuildContext context, int index) {
                 return _queryData![index].conferences.isEmpty
                     ? const SizedBox.shrink()
-                    : GestureDetector(
-                        onTap: () {
-                          //
-                          log('id: ${_queryData![index].conferences[0].id}');
-                          //
-                        },
-                        child: CustomConfCard(
-                          day: _queryData![index]
-                              .conferences[0]
-                              .schedules[0]
-                              .day,
-                          name: _queryData![index].conferences[0].name,
-                        ),
+                    : Row(
+                        children: [
+                          // TimelineTile(),
+                          GestureDetector(
+                            onTap: () {
+                              //
+                              log('id: ${_queryData![index].conferences[0].id}');
+                              //
+                            },
+                            child: CustomConfCard(
+                              day: _queryData![index]
+                                  .conferences[0]
+                                  .schedules[0]
+                                  .day,
+                              name: _queryData![index].conferences[0].name,
+                            ),
+                          ),
+                        ],
                       );
               },
             ),

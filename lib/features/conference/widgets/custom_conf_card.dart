@@ -30,6 +30,7 @@ class CustomConfCard extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Container(
+          width: 300,
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: AppColors.kVeryLightGray,
@@ -72,13 +73,12 @@ class CustomConfCard extends StatelessWidget {
       return '${parse.day} ${DateFormat.MMM().format(parse)}, ${parse.year}';
     } catch (e) {
       log(e.toString());
-      //
       String fixedYear = inputString.split('-').first;
       String fixedMonth = inputString.split('-').elementAt(1).padLeft(2, '0');
       String fixedDay = inputString.split('-').last;
-      String newDate = '$fixedYear-$fixedMonth-$fixedDay';
+      String modifiedDate = '$fixedYear-$fixedMonth-$fixedDay';
       //
-      DateTime parse = DateTime.parse(newDate);
+      DateTime parse = DateTime.parse(modifiedDate);
       //
       return '${parse.day} ${DateFormat.MMM().format(parse)}, ${parse.year}';
     }
