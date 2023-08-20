@@ -5,7 +5,7 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import '../core/const/color.dart';
 import '../features/conference/pages/conference_page.dart';
-import '../features/sponsor/page/sponsors_page.dart';
+import '../features/sponsor/page/sponsor_page.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});

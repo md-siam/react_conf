@@ -14,6 +14,7 @@ class SponsorPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: AppColors.kVeryLightGray,
         title: Text(
           appBarTitle,

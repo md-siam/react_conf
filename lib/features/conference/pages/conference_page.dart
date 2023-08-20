@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:react_conf/core/const/color.dart';
+
+import 'conference_detail_page.dart';
 
 class ConferencePage extends StatelessWidget {
   final Widget appBarTitle;
@@ -17,11 +20,21 @@ class ConferencePage extends StatelessWidget {
         backgroundColor: AppColors.kVeryLightGray,
         title: appBarTitle,
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Conference'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                      builder: (context) => const ConferenceDetailPage()),
+                );
+              },
+              child: Text('Press'),
+            ),
           ],
         ),
       ),
