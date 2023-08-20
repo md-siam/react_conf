@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:react_conf/core/const/color.dart';
+
+import '../widgets/sponsor_card.dart';
 
 class SponsorPage extends StatelessWidget {
   final String appBarTitle;
@@ -27,17 +28,21 @@ class SponsorPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(24).copyWith(bottom: 10),
-        child: SingleChildScrollView(
+        child: const SingleChildScrollView(
           controller: null,
-          physics: const BouncingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           child: Center(
             child: Column(
               children: [
-                SvgPicture.asset('assets/sponsors/gold_sponsor.svg'),
-                const SizedBox(height: 16),
-                SvgPicture.asset('assets/sponsors/silver_sponsors.svg'),
-                const SizedBox(height: 16),
-                SvgPicture.asset('assets/sponsors/bronze_sponsors.svg'),
+                SponsorCard(
+                  imageLink: 'gold_sponsor.svg',
+                ),
+                SponsorCard(
+                  imageLink: 'silver_sponsors.svg',
+                ),
+                SponsorCard(
+                  imageLink: 'bronze_sponsors.svg',
+                ),
               ],
             ),
           ),
