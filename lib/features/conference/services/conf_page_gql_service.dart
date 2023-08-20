@@ -51,7 +51,7 @@ class ConfPageGraphQLService {
         return conferencesData;
       }
     } catch (error) {
-      log('$error');
+      log('Exception: $error');
       return [];
     }
   }

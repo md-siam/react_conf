@@ -44,7 +44,7 @@ class Interval {
 class Session {
   String type;
   String title;
-  String description;
+  String? description;
   List<Person>? people;
 
   Session({

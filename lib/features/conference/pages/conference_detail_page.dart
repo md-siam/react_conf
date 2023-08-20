@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/const/app_color.dart';
 import '../../../core/const/text_style.dart';
+import '../models/conference_detail_model.dart';
+import '../services/conf_detail_page_gql_service.dart';
 import 'tabs/organizer.dart';
 import 'tabs/schedule.dart';
 import 'tabs/speaker.dart';
@@ -21,10 +23,22 @@ class ConferenceDetailPage extends StatefulWidget {
 }
 
 class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
+  final ConfDetailPageGraphQLService _graphQLService =
+      ConfDetailPageGraphQLService();
+
+  List<ConferenceDetailModel>? _queryData;
+
   @override
   void initState() {
     super.initState();
-    log(widget.conferenceId);
+    log('conferenceId: ${widget.conferenceId}');
+    _load();
+  }
+
+  Future<void> _load() async {
+    _queryData = null;
+    _queryData = await _graphQLService.getConference(widget.conferenceId);
+    setState(() {});
   }
 
   @override
@@ -77,16 +91,30 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
                 ],
               ),
             ),
-            const Expanded(
-              child: TabBarView(
-                children: [
-                  Organizer(),
-                  Speaker(),
-                  Schedule(),
-                  Sponsor(),
-                ],
-              ),
-            ),
+            Expanded(
+                child: _queryData == null
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Card(
+                        child: Column(
+                          children: [
+                            Text(_queryData!.length.toString()),
+                            // Text(_queryData![0].description),
+                            // Text(_queryData![0].intervals[0].begin),
+                          ],
+                        ),
+                      )
+
+                // const TabBarView(
+                //     children: [
+                //       Organizer(),
+                //       Speaker(),
+                //       Schedule(),
+                //       Sponsor(),
+                //     ],
+                //   ),
+                ),
           ],
         ),
       ),
