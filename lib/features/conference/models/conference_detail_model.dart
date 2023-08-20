@@ -9,20 +9,14 @@ class ConferenceDetailModel {
     required this.intervals,
   });
 
-  factory ConferenceDetailModel.fromJson(Map<String, dynamic> json) =>
+  factory ConferenceDetailModel.fromJson(
+          {required Map<String, dynamic> json}) =>
       ConferenceDetailModel(
         day: DateTime.parse(json["day"]),
         description: json["description"],
         intervals: List<Interval>.from(
             json["intervals"].map((x) => Interval.fromJson(x))),
       );
-
-  Map<String, dynamic> toJson() => {
-        "day":
-            "${day.year.toString().padLeft(4, '0')}-${day.month.toString().padLeft(2, '0')}-${day.day.toString().padLeft(2, '0')}",
-        "description": description,
-        "intervals": List<dynamic>.from(intervals.map((x) => x.toJson())),
-      };
 }
 
 class Interval {
@@ -45,13 +39,6 @@ class Interval {
         sessions: List<Session>.from(
             json["sessions"].map((x) => Session.fromJson(x))),
       );
-
-  Map<String, dynamic> toJson() => {
-        "begin": begin,
-        "end": end,
-        "title": title,
-        "sessions": List<dynamic>.from(sessions.map((x) => x.toJson())),
-      };
 }
 
 class Session {
@@ -75,15 +62,6 @@ class Session {
             ? []
             : List<Person>.from(json["people"]!.map((x) => Person.fromJson(x))),
       );
-
-  Map<String, dynamic> toJson() => {
-        "type": type,
-        "title": title,
-        "description": description,
-        "people": people == null
-            ? []
-            : List<dynamic>.from(people!.map((x) => x.toJson())),
-      };
 }
 
 class Person {
@@ -99,11 +77,6 @@ class Person {
         name: json["name"],
         image: Image.fromJson(json["image"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "image": image.toJson(),
-      };
 }
 
 class Image {
@@ -116,8 +89,4 @@ class Image {
   factory Image.fromJson(Map<String, dynamic> json) => Image(
         url: json["url"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "url": url,
-      };
 }

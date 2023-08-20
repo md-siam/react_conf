@@ -15,7 +15,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
-  static final List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = [
     ConferencePage(
       appBarTitle: SvgPicture.asset(
         'assets/images/app_title.svg',
@@ -41,7 +41,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
-          boxShadow: <BoxShadow>[
+          boxShadow: [
             BoxShadow(
               color: Colors.black54,
               blurRadius: 10.0,
@@ -50,7 +50,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ],
         ),
         child: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(Symbols.today, size: 26),
               label: 'Conference',
