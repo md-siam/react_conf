@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:react_conf/core/config/graphql_config.dart';
-import 'package:react_conf/features/conference/models/conference_model.dart';
+
+import '../../../core/config/graphql_config.dart';
+import '../models/conference_model.dart';
 
 class ConfPageGraphQLService {
   static GraphQLConfig graphQLConfig = GraphQLConfig();
@@ -13,19 +16,19 @@ class ConfPageGraphQLService {
           fetchPolicy: FetchPolicy.noCache,
           document: gql(
             """
-           query ConferenceDayQuery {
-              allSeries {
-                id
-                name
-                conferences {
+            query ConferenceDayQuery {
+                allSeries {
                   id
                   name
-                  schedules {
-                    day
+                  conferences {
+                    id
+                    name
+                    schedules {
+                      day
+                    }
                   }
                 }
               }
-            }
             """,
           ),
         ),
@@ -40,13 +43,15 @@ class ConfPageGraphQLService {
           return [];
         }
 
-        List<ConferenceModel> feelings = res
-            .map((feeling) => ConferenceModel.fromJson(json: feeling))
+        List<ConferenceModel> conferencesData = res
+            .map((conferenceData) =>
+                ConferenceModel.fromJson(json: conferenceData))
             .toList();
 
-        return feelings;
+        return conferencesData;
       }
     } catch (error) {
+      log('$error');
       return [];
     }
   }

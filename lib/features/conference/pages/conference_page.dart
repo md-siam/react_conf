@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:react_conf/core/const/color.dart';
 
 import '../models/conference_model.dart';
 import '../services/conf_page_gql_service.dart';
+import '../widgets/custom_conf_card.dart';
 import 'conference_detail_page.dart';
 
 class ConferencePage extends StatefulWidget {
@@ -20,7 +23,7 @@ class ConferencePage extends StatefulWidget {
 class _ConferencePageState extends State<ConferencePage> {
   final ConfPageGraphQLService _graphQLService = ConfPageGraphQLService();
 
-  List<ConferenceModel>? _conferences;
+  List<ConferenceModel>? _queryData;
 
   @override
   void initState() {
@@ -29,8 +32,8 @@ class _ConferencePageState extends State<ConferencePage> {
   }
 
   Future<void> _load() async {
-    _conferences = null;
-    _conferences = await _graphQLService.getConference();
+    _queryData = null;
+    _queryData = await _graphQLService.getConference();
     setState(() {});
   }
 
@@ -45,28 +48,48 @@ class _ConferencePageState extends State<ConferencePage> {
         centerTitle: true,
         backgroundColor: AppColors.kVeryLightGray,
         title: widget.appBarTitle,
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                    builder: (context) => const ConferenceDetailPage()),
+              );
+            },
+            child: const Text('Detail\nPage'),
+          ),
+        ],
       ),
-      body: _conferences == null
+      body: _queryData == null
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Conference'),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const ConferenceDetailPage()),
+          : ListView.separated(
+              padding: const EdgeInsets.all(24),
+              itemCount: _queryData!.length,
+              separatorBuilder: (BuildContext context, int index) =>
+                  _queryData![index].conferences.isEmpty
+                      ? const SizedBox.shrink()
+                      : const SizedBox(height: 40),
+              itemBuilder: (BuildContext context, int index) {
+                return _queryData![index].conferences.isEmpty
+                    ? const SizedBox.shrink()
+                    : GestureDetector(
+                        onTap: () {
+                          //
+                          log('id: ${_queryData![index].conferences[0].id}');
+                          //
+                        },
+                        child: CustomConfCard(
+                          day: _queryData![index]
+                              .conferences[0]
+                              .schedules[0]
+                              .day,
+                          name: _queryData![index].conferences[0].name,
+                        ),
                       );
-                    },
-                    child: const Text('Press'),
-                  ),
-                ],
-              ),
+              },
             ),
     );
   }

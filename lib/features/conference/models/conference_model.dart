@@ -38,13 +38,13 @@ class Conference {
 }
 
 class Schedule {
-  DateTime day;
+  String day;
 
   Schedule({
     required this.day,
   });
 
   factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
-        day: DateTime.parse(json["day"]),
+        day: json["day"],
       );
 }

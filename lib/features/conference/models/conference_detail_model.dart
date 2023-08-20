@@ -1,5 +1,5 @@
 class ConferenceDetailModel {
-  DateTime day;
+  String day;
   String description;
   List<Interval> intervals;
 
@@ -12,7 +12,7 @@ class ConferenceDetailModel {
   factory ConferenceDetailModel.fromJson(
           {required Map<String, dynamic> json}) =>
       ConferenceDetailModel(
-        day: DateTime.parse(json["day"]),
+        day: json["day"],
         description: json["description"],
         intervals: List<Interval>.from(
             json["intervals"].map((x) => Interval.fromJson(x))),
