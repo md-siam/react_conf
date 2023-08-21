@@ -47,7 +47,7 @@ dependencies:
   flutter_svg: ^2.0.7
   # For accessing graphQL API
   graphql_flutter: ^5.1.2
-  # For DateTime conversion
+  # For DateTime formatting
   intl: ^0.18.1
 
 

@@ -14,7 +14,140 @@ This application is a Pre-assessment for the Mid-Level Flutter Developer positio
 This application is using one third-party package from the open-source community. Thanks to the developers of <a href = "https://pub.dev/packages/graphql_flutter">graphql_flutter: ^5.1.2 </a> for this amazing package. The purpose of using this package is to run GraphQL quartes in a flutter application.
 
 ```yaml
-graphql_flutter: ^5.1.2   //For using graphQL API
+# For fonts (Inter - Typeface)
+google_fonts: ^5.1.0
+# For displaying time line
+timeline_tile: ^2.0.0
+# For launching website into the app
+url_launcher: ^6.1.12
+# For icons
+material_symbols_icons: ^4.2668.0
+# For rendering svg files
+flutter_svg: ^2.0.7
+# For accessing graphQL API
+graphql_flutter: ^5.1.2
+# For DateTime formatting
+intl: ^0.18.1
+```
+
+## GraphQL Queries Used
+
+- **For fetching conference details with id:**
+
+```graphql
+query ConferenceDayQuery {
+  allSeries {
+    id
+    name
+    conferences {
+      id
+      name
+      schedules {
+        day
+      }
+    }
+  }
+}
+```
+
+- **For fetching Organizer's details using the 'conferenceId':**
+
+```graphql
+query RootQuery($conferenceId: ID!) {
+  conference(id: $conferenceId) {
+    partners {
+      ...SponsorFragment
+    }
+  }
+}
+
+fragment SponsorFragment on Contact {
+  name
+  social {
+    homepage
+  }
+  about
+  image {
+    url
+  }
+}
+```
+
+- **For fetching Speakers's details using the 'conferenceId':**
+
+```graphql
+query PageQuery($conferenceId: ID!) {
+  conference(id: $conferenceId) {
+    speakers {
+      name
+      about
+      social {
+        homepage
+        github
+        twitter
+        linkedin
+      }
+      image {
+        url
+      }
+      country {
+        code
+      }
+    }
+  }
+}
+```
+
+- **For fetching Schedule details using the 'conferenceId':**
+
+```graphql
+query PageQuery(\$conferenceId: ID!) {
+  conference(id: \$conferenceId) {
+    schedules {
+      day
+      description
+      intervals {
+        begin
+        end
+        title
+        sessions {
+          type
+          title
+          description
+        }
+      }
+    }
+  }
+}
+```
+
+- **For fetching Sponsor's details using the 'conferenceId':**
+
+```graphql
+query RootQuery($conferenceId: ID!) {
+  conference(id: $conferenceId) {
+    goldSponsors {
+      ...SponsorFragment
+    }
+    silverSponsors {
+      ...SponsorFragment
+    }
+    bronzeSponsors {
+      ...SponsorFragment
+    }
+  }
+}
+
+fragment SponsorFragment on Contact {
+  name
+  social {
+    homepage
+  }
+  about
+  image {
+    url
+  }
+}
 ```
 
 <p align="center">
@@ -28,51 +161,54 @@ graphql_flutter: ^5.1.2   //For using graphQL API
 ## File Pattern Inside The `lib` Folder
 
 ```
-lib/
-├── core/
-│   ├── config/
-│   │   └── graphql_config.dart
-│   ├── const/
-│   │   ├── app_color.dart
-│   │   └── text_style.dart
-│   └── .DS_Store
-├── features/
-│   ├── conference/
-│   │   ├── models/
-│   │   │   ├── conference_model.dart
-│   │   │   ├── organizer_model.dart
-│   │   │   ├── schedule_model.dart
-│   │   │   ├── speaker_model.dart
-│   │   │   └── sponsor_model.dart
-│   │   ├── pages/
-│   │   │   ├── tabs/
-│   │   │   │   ├── organizer_tab.dart
-│   │   │   │   ├── schedule_tab.dart
-│   │   │   │   ├── speaker_tab.dart
-│   │   │   │   └── sponsor_tab.dart
-│   │   │   ├── conference_detail_page.dart
-│   │   │   └── conference_page.dart
-│   │   ├── services/
-│   │   │   ├── bronze_sponsor_gql_service.dart
-│   │   │   ├── conf_page_gql_service.dart
-│   │   │   ├── gold_sponsor_gql_service.dart
-│   │   │   ├── organizer_gql_service.dart
-│   │   │   ├── schedule_gql_service.dart
-│   │   │   ├── silver_sponsor_gql_service.dart
-│   │   │   └── speaker_gql_service.dart
-│   │   └── widgets/
-│   │       ├── custom_conf_card.dart
-│   │       ├── custom_time_line.dart
-│   │       ├── organizer_card.dart
-│   │       ├── schedule_card.dart
-│   │       ├── speaker_card.dart
-│   │       └── sponsor_card.dart
-│   └── sponsor/
-│       ├── page/
-│       │   └── sponsor_page.dart
-│       └── widgets/
-│           └── sponsor_card.dart
-├── routing/
-│   └── bottom_nav_bar.dart
-└── main.dart
+    lib/
+    ├── core/
+    │   ├── config/
+    │   │   └── graphql_config.dart
+    │   └── const/
+    │       ├── app_color.dart
+    │       └── text_style.dart
+    │
+    ├── features/
+    │   ├── conference/
+    │   │   ├── models/
+    │   │   │   ├── conference_model.dart
+    │   │   │   ├── organizer_model.dart
+    │   │   │   ├── schedule_model.dart
+    │   │   │   ├── speaker_model.dart
+    │   │   │   └── sponsor_model.dart
+    │   │   ├── pages/
+    │   │   │   ├── tabs/
+    │   │   │   │   ├── organizer_tab.dart
+    │   │   │   │   ├── schedule_tab.dart
+    │   │   │   │   ├── speaker_tab.dart
+    │   │   │   │   └── sponsor_tab.dart
+    │   │   │   ├── conference_detail_page.dart
+    │   │   │   └── conference_page.dart
+    │   │   ├── services/
+    │   │   │   ├── bronze_sponsor_gql_service.dart
+    │   │   │   ├── conf_page_gql_service.dart
+    │   │   │   ├── gold_sponsor_gql_service.dart
+    │   │   │   ├── organizer_gql_service.dart
+    │   │   │   ├── schedule_gql_service.dart
+    │   │   │   ├── silver_sponsor_gql_service.dart
+    │   │   │   └── speaker_gql_service.dart
+    │   │   └── widgets/
+    │   │       ├── custom_conf_card.dart
+    │   │       ├── custom_list_tile.dart
+    │   │       ├── custom_time_line.dart
+    │   │       ├── organizer_card.dart
+    │   │       ├── schedule_card.dart
+    │   │       ├── speaker_card.dart
+    │   │       └── sponsor_card.dart
+    │   │
+    │   └── sponsor/
+    │       ├── page/
+    │       │   └── sponsor_page.dart
+    │       └── widgets/
+    │           └── sponsor_card.dart
+    │
+    ├── routing/
+    │   └── bottom_nav_bar.dart
+    └── main.dart
 ```
