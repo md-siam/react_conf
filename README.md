@@ -31,7 +31,7 @@ intl: ^0.18.1
 ```
 
 <p align="center">
-    <a href="https://drive.google.com/file/d/1N7cznrKP1JaxWaMAPTsdvH4uRltp5-ig/view?usp=sharing" target="_blank"><img src="screenshots/download_apk/download.png" height="100" ></img></a>
+    <a href="https://drive.google.com/file/d/1Wog_dIS-VDg44YEaT93mvwoI3-BOZ_Ad/view?usp=sharing" target="_blank"><img src="screenshots/download_apk/download.png" height="100" ></img></a>
   </p>
 
 ## App Demo
