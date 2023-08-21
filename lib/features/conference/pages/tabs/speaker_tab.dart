@@ -10,8 +10,8 @@ class Speaker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24).copyWith(bottom: 0),
-      child: queryData!.isEmpty
+      padding: const EdgeInsets.all(24).copyWith(top: 15, bottom: 0),
+      child: queryData == null || queryData!.isEmpty
           ? const Center(
               child: Text(
                 'No information available..!',

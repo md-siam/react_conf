@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../models/conference_detail_model.dart';
 
-class Organizer extends StatelessWidget {
-  final List<ConferenceDetailModel>? queryData;
-  const Organizer({Key? key, this.queryData}) : super(key: key);
+
+class OrganizerTab extends StatelessWidget {
+  
+  const OrganizerTab({Key? key, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
