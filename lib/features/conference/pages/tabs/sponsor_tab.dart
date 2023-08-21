@@ -53,6 +53,8 @@ class SponsorTab extends StatelessWidget {
                             imageLink: goldSponsorQData![index].image.url,
                             sponsorsName: goldSponsorQData![index].name,
                             about: goldSponsorQData![index].about,
+                            websiteLink:
+                                goldSponsorQData![index].social.homepage,
                           );
                         },
                       ),
@@ -67,7 +69,7 @@ class SponsorTab extends StatelessWidget {
                     children: [
                       const SizedBox(height: 20),
                       const Divider(
-                        thickness: 1,
+                        thickness: 2,
                         color: AppColors.kYellow,
                       ),
                       const SizedBox(height: 20),
@@ -93,6 +95,8 @@ class SponsorTab extends StatelessWidget {
                             imageLink: silverSponsorQData![index].image.url,
                             sponsorsName: silverSponsorQData![index].name,
                             about: silverSponsorQData![index].about,
+                            websiteLink:
+                                silverSponsorQData![index].social.homepage,
                           );
                         },
                       ),
@@ -100,42 +104,51 @@ class SponsorTab extends StatelessWidget {
                   ),
             //
             //
-            // bronzeSponsorQData == null || bronzeSponsorQData!.isEmpty
-            //     ? const SizedBox.shrink()
-            //     : Column(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         children: [
-            //           const SizedBox(height: 40),
-            //           const Text(
-            //             'Bronze Sponsor',
-            //             style: TextStyle(
-            //               fontSize: 18,
-            //               color: AppColors.kBlack,
-            //               fontWeight: FontWeight.w600,
-            //             ),
-            //           ),
-            //           const SizedBox(height: 10),
-            //           //
-            //           ListView.separated(
-            //             shrinkWrap: true,
-            //             physics: const NeverScrollableScrollPhysics(),
-            //             itemCount: bronzeSponsorQData!.length,
-            //             separatorBuilder: (BuildContext context, int index) {
-            //               return const SizedBox(height: 20);
-            //             },
-            //             itemBuilder: (BuildContext context, int index) {
-            //               return SponsorCard(
-            //                 imageLink: bronzeSponsorQData![index].image.url,
-            //                 sponsorsName: bronzeSponsorQData![index].name,
-            //                 about: bronzeSponsorQData![index].about,
-            //               );
-            //             },
-            //           ),
-            //         ],
-            //       ),
+            bronzeSponsorQData == null || bronzeSponsorQData!.isEmpty
+                ? const SizedBox.shrink()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 20),
+                      const Divider(
+                        thickness: 2,
+                        color: AppColors.kYellow,
+                      ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Bronze Sponsor',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: AppColors.kBlack,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      //
+                      ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: bronzeSponsorQData!.length,
+                        separatorBuilder: (BuildContext context, int index) {
+                          return const SizedBox(height: 20);
+                        },
+                        itemBuilder: (BuildContext context, int index) {
+                          return SponsorCard(
+                            imageLink: bronzeSponsorQData![index].image.url,
+                            sponsorsName: bronzeSponsorQData![index].name,
+                            about: bronzeSponsorQData![index].about,
+                            websiteLink:
+                                bronzeSponsorQData![index].social.homepage,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
             const SizedBox(height: 24),
             (goldSponsorQData == null || goldSponsorQData!.isEmpty) &&
-                    (silverSponsorQData == null || silverSponsorQData!.isEmpty)
+                    (silverSponsorQData == null ||
+                        silverSponsorQData!.isEmpty) &&
+                    (bronzeSponsorQData == null || bronzeSponsorQData!.isEmpty)
                 ? Center(
                     child: Column(
                       children: [
