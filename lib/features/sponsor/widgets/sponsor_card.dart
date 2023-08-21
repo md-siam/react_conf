@@ -7,14 +7,13 @@ class SponsorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SvgPicture.asset(
-          'assets/sponsors/$cardName',
-          width: MediaQuery.of(context).size.width - 24,
-        ),
-        const SizedBox(height: 16),
-      ],
+    return Material(
+      elevation: 6.0,
+      borderRadius: BorderRadius.circular(10),
+      child: SvgPicture.asset(
+        'assets/sponsors/$cardName',
+        width: MediaQuery.of(context).size.width - 24,
+      ),
     );
   }
 }

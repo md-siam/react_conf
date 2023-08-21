@@ -30,20 +30,30 @@ class OrganizerTab extends StatelessWidget {
                 ],
               ),
             )
-          : ListView.separated(
-              itemCount: organizerQData!.length,
+          : SingleChildScrollView(
+              controller: null,
               physics: const BouncingScrollPhysics(),
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(height: 20);
-              },
-              itemBuilder: (BuildContext context, int index) {
-                return OrganizerCard(
-                  imageLink: organizerQData![index].image.url,
-                  sponsorsName: organizerQData![index].name,
-                  about: organizerQData![index].about,
-                  websiteLink: organizerQData![index].social.homepage,
-                );
-              },
+              child: Column(
+                children: [
+                  ListView.separated(
+                    shrinkWrap: true,
+                    itemCount: organizerQData!.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const SizedBox(height: 20);
+                    },
+                    itemBuilder: (BuildContext context, int index) {
+                      return OrganizerCard(
+                        imageLink: organizerQData![index].image.url,
+                        sponsorsName: organizerQData![index].name,
+                        about: organizerQData![index].about,
+                        websiteLink: organizerQData![index].social.homepage,
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 24),
+                ],
+              ),
             ),
     );
   }

@@ -34,9 +34,11 @@ class SponsorPage extends StatelessWidget {
                 SponsorCard(
                   cardName: 'gold_sponsor.svg',
                 ),
+                SizedBox(height: 24),
                 SponsorCard(
                   cardName: 'silver_sponsors.svg',
                 ),
+                SizedBox(height: 24),
                 SponsorCard(
                   cardName: 'bronze_sponsors.svg',
                 ),

@@ -21,23 +21,33 @@ class Speaker extends StatelessWidget {
                 ),
               ),
             )
-          : ListView.separated(
-              itemCount: speakerQData!.length,
+          : SingleChildScrollView(
+              controller: null,
               physics: const BouncingScrollPhysics(),
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(height: 20);
-              },
-              itemBuilder: (BuildContext context, int index) {
-                return SpeakerCard(
-                  imageLink: speakerQData![index].image.url!,
-                  speakersName: speakerQData![index].name,
-                  twitterUrl: speakerQData![index].social.twitter,
-                  linkedInUrl: speakerQData![index].social.linkedin,
-                  homepageUrl: speakerQData![index].social.homepage,
-                  githubUrl: speakerQData![index].social.github,
-                  about: speakerQData![0].about,
-                );
-              },
+              child: Column(
+                children: [
+                  ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: speakerQData!.length,
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const SizedBox(height: 20);
+                    },
+                    itemBuilder: (BuildContext context, int index) {
+                      return SpeakerCard(
+                        imageLink: speakerQData![index].image.url!,
+                        speakersName: speakerQData![index].name,
+                        twitterUrl: speakerQData![index].social.twitter,
+                        linkedInUrl: speakerQData![index].social.linkedin,
+                        homepageUrl: speakerQData![index].social.homepage,
+                        githubUrl: speakerQData![index].social.github,
+                        about: speakerQData![0].about,
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 24),
+                ],
+              ),
             ),
     );
   }
