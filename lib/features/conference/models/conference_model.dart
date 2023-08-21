@@ -21,30 +21,20 @@ class ConferenceModel {
 class Conference {
   String id;
   String name;
-  List<Schedule> schedules;
+  String slogan;
+  String startDate;
 
   Conference({
     required this.id,
     required this.name,
-    required this.schedules,
+    required this.slogan,
+    required this.startDate,
   });
 
   factory Conference.fromJson(Map<String, dynamic> json) => Conference(
         id: json["id"],
         name: json["name"],
-        schedules: List<Schedule>.from(
-            json["schedules"].map((x) => Schedule.fromJson(x))),
-      );
-}
-
-class Schedule {
-  String day;
-
-  Schedule({
-    required this.day,
-  });
-
-  factory Schedule.fromJson(Map<String, dynamic> json) => Schedule(
-        day: json["day"],
+        slogan: json["slogan"],
+        startDate: json["startDate"],
       );
 }

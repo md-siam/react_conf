@@ -9,10 +9,12 @@ import '../../../core/const/app_color.dart';
 class CustomConfCard extends StatelessWidget {
   final String day;
   final String name;
+  final String slogan;
   const CustomConfCard({
     Key? key,
     required this.day,
     required this.name,
+    required this.slogan,
   }) : super(key: key);
 
   @override
@@ -40,7 +42,7 @@ class CustomConfCard extends StatelessWidget {
           ),
         ),
         Container(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: AppColors.kVeryLightGray,
             borderRadius: const BorderRadius.only(
@@ -61,13 +63,27 @@ class CustomConfCard extends StatelessWidget {
               SvgPicture.asset('assets/images/marker.svg'),
               const SizedBox(width: 20),
               Flexible(
-                child: Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    color: AppColors.kDeepBlue,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        color: AppColors.kDeepBlue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      slogan,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.kDeepGray,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

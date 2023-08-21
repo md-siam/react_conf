@@ -75,11 +75,9 @@ class _ConferencePageState extends State<ConferencePage> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 40),
                             child: CustomConfCard(
-                              day: _queryData![index]
-                                  .conferences[0]
-                                  .schedules[0]
-                                  .day,
+                              day: _queryData![index].conferences[0].startDate,
                               name: _queryData![index].conferences[0].name,
+                              slogan: _queryData![index].conferences[0].slogan,
                             ),
                           ),
                         ),

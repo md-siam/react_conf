@@ -17,18 +17,17 @@ class ConfPageGraphQLService {
           document: gql(
             """
             query ConferenceDayQuery {
-                allSeries {
+              allSeries {
+                id
+                name
+                conferences {
                   id
                   name
-                  conferences {
-                    id
-                    name
-                    schedules {
-                      day
-                    }
-                  }
+                  slogan
+                  startDate
                 }
               }
+            }
             """,
           ),
         ),

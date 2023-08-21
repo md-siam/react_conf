@@ -50,9 +50,8 @@ query ConferenceDayQuery {
     conferences {
       id
       name
-      schedules {
-        day
-      }
+      slogan
+      startDate
     }
   }
 }
