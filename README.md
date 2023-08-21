@@ -7,7 +7,7 @@
 # React Conf
 
 <img align="right" src="screenshots/app_icon/playstore.png" height="190"></img>
-This application is a Pre-assessment for the Mid-Level Flutter Developer position at [Lemon Hive](https://www.lemonhive.com/). It's an open-source project, hence use of the source code is governed by an MIT-style license that can be found in the LICENSE file or at [MIT LICENSE Info](https://choosealicense.com/licenses/mit/). This app is using a GraphQL API: [https://api.react-finland.fi/graphql](https://api.react-finland.fi/graphql). Detail information about this GraphQL API chan be found in this GitHub repo: [here](https://github.com/ReactFinland/graphql-api).
+This application is a Pre-assessment for the Mid-Level Flutter Developer position at [Lemon Hive](https://www.lemonhive.com/). You can read the details of the Pre-assessment from the pdf file [here](screenshots/pdf/Flutter-MID_Instruction.pdf).<br /> It's an open-source project, hence use of the source code is governed by an MIT-style license that can be found in the LICENSE file or at [MIT LICENSE Info](https://choosealicense.com/licenses/mit/). This app is using a GraphQL API: [https://api.react-finland.fi/graphql](https://api.react-finland.fi/graphql). Detail information about this GraphQL API chan be found in this GitHub repo: [here](https://github.com/ReactFinland/graphql-api).
 
 ## Packages Used
 
