@@ -109,8 +109,8 @@ query PageQuery($conferenceId: ID!) {
 - **For fetching Schedule details using the 'conferenceId':**
 
 ```graphql
-query PageQuery(\$conferenceId: ID!) {
-  conference(id: \$conferenceId) {
+query PageQuery($conferenceId: ID!) {
+  conference(id: $conferenceId) {
     schedules {
       day
       description
