@@ -1,15 +1,17 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:react_conf/features/conference/models/organizer_model.dart';
 
 import '../../../core/const/app_color.dart';
 import '../../../core/const/text_style.dart';
 import '../models/speaker_model.dart';
 import '../models/sponsor_model.dart';
 import '../services/bronze_sponsor_gql_service.dart';
+import '../services/gold_sponsor_gql_service.dart';
+import '../services/organizer_gql_service.dart';
 import '../services/silver_sponsor_gql_service.dart';
 import '../services/speaker_gql_service.dart';
-import '../services/gold_sponsor_gql_service.dart';
 import 'tabs/organizer_tab.dart';
 import 'tabs/schedule_tab.dart';
 import 'tabs/speaker_tab.dart';
@@ -27,6 +29,8 @@ class ConferenceDetailPage extends StatefulWidget {
 }
 
 class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
+  final OrganizerGraphQLService _organizerGraphQLService =
+      OrganizerGraphQLService();
   final SpeakerGraphQLService _speakerGraphQLService = SpeakerGraphQLService();
   final GoldSponsorGraphQLService _goldSponsorGraphQLService =
       GoldSponsorGraphQLService();
@@ -35,6 +39,8 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
   final BronzeSponsorGraphQLService _bronzeSponsorGraphQLService =
       BronzeSponsorGraphQLService();
 
+  List<OrganizerModel>? _organizerData;
+  //
   List<SpeakerModel>? _speakersData;
   //
   List<SponsorModel>? _goldSponsorsData;
@@ -45,10 +51,18 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
   void initState() {
     super.initState();
     log('conferenceId: ${widget.conferenceId}');
+    _loadOrganizersData();
     _loadSpeakersData();
     _loadGoldSponsorsData();
     _loadSilverSponsorsData();
     _loadBronzeSponsorsData();
+  }
+
+  Future<void> _loadOrganizersData() async {
+    _organizerData = null;
+    _organizerData =
+        await _organizerGraphQLService.getConference(widget.conferenceId);
+    setState(() {});
   }
 
   Future<void> _loadSpeakersData() async {
@@ -83,7 +97,7 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
-      initialIndex: 3,
+      initialIndex: 0,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -138,7 +152,7 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
                     )
                   : TabBarView(
                       children: [
-                        OrganizerTab(),
+                        OrganizerTab(organizerQData: _organizerData),
                         Speaker(queryData: _speakersData),
                         ScheduleTab(),
                         SponsorTab(
