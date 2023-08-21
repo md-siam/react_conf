@@ -32,21 +32,46 @@ lib/
 ├── core/
 │   ├── config/
 │   │   └── graphql_config.dart
-│   └── const/
-│       └── color.dart
+│   ├── const/
+│   │   ├── app_color.dart
+│   │   └── text_style.dart
+│   └── .DS_Store
 ├── features/
 │   ├── conference/
 │   │   ├── models/
-│   │   │   └── conference_model.dart
+│   │   │   ├── conference_model.dart
+│   │   │   ├── organizer_model.dart
+│   │   │   ├── schedule_model.dart
+│   │   │   ├── speaker_model.dart
+│   │   │   └── sponsor_model.dart
 │   │   ├── pages/
 │   │   │   ├── tabs/
+│   │   │   │   ├── organizer_tab.dart
+│   │   │   │   ├── schedule_tab.dart
+│   │   │   │   ├── speaker_tab.dart
+│   │   │   │   └── sponsor_tab.dart
 │   │   │   ├── conference_detail_page.dart
 │   │   │   └── conference_page.dart
 │   │   ├── services/
+│   │   │   ├── bronze_sponsor_gql_service.dart
+│   │   │   ├── conf_page_gql_service.dart
+│   │   │   ├── gold_sponsor_gql_service.dart
+│   │   │   ├── organizer_gql_service.dart
+│   │   │   ├── schedule_gql_service.dart
+│   │   │   ├── silver_sponsor_gql_service.dart
+│   │   │   └── speaker_gql_service.dart
 │   │   └── widgets/
+│   │       ├── custom_conf_card.dart
+│   │       ├── custom_time_line.dart
+│   │       ├── organizer_card.dart
+│   │       ├── schedule_card.dart
+│   │       ├── speaker_card.dart
+│   │       └── sponsor_card.dart
 │   └── sponsor/
-│       └── page/
-│           └── sponsors_page.dart
+│       ├── page/
+│       │   └── sponsor_page.dart
+│       └── widgets/
+│           └── sponsor_card.dart
 ├── routing/
 │   └── bottom_nav_bar.dart
 └── main.dart
