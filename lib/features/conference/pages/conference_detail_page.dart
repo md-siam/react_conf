@@ -112,7 +112,7 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
-      initialIndex: 2,
+      initialIndex: 0,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(

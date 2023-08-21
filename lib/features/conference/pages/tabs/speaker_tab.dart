@@ -28,8 +28,8 @@ class Speaker extends StatelessWidget {
                 children: [
                   ListView.separated(
                     shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: speakerQData!.length,
+                    physics: const NeverScrollableScrollPhysics(),
                     separatorBuilder: (BuildContext context, int index) {
                       return const SizedBox(height: 20);
                     },

@@ -4,7 +4,6 @@ class CustomListTile extends StatelessWidget {
   final String begin;
   final String end;
   final String sessionsTitle;
-
   const CustomListTile({
     Key? key,
     required this.begin,

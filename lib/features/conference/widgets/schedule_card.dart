@@ -79,7 +79,9 @@ class ScheduleCard extends StatelessWidget {
       ),
     );
   }
-
+  
+  /// This methods format DateTime to [week day name]
+  ///
   String _parseDateStr(String inputString) {
     try {
       DateTime parse = DateTime.parse(inputString);

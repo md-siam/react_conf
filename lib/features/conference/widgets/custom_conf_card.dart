@@ -77,7 +77,8 @@ class CustomConfCard extends StatelessWidget {
     );
   }
 
-  //
+  /// This method format DateTime to [day-monthName-Year]
+  ///
   String _parseDateStr(String inputString) {
     try {
       DateTime parse = DateTime.parse(inputString);

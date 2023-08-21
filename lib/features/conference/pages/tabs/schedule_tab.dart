@@ -35,9 +35,19 @@ class ScheduleTab extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ScheduleCard(
-                    scheduleIndex: 0,
-                    scheduleQData: scheduleQData,
+                  ListView.separated(
+                    shrinkWrap: true,
+                    itemCount: scheduleQData!.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const SizedBox(height: 24);
+                    },
+                    itemBuilder: (BuildContext context, int scheduleIndex) {
+                      return ScheduleCard(
+                        scheduleIndex: scheduleIndex,
+                        scheduleQData: scheduleQData,
+                      );
+                    },
                   ),
                   const SizedBox(height: 24),
                 ],
