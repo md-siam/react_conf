@@ -1,15 +1,17 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:react_conf/features/conference/models/organizer_model.dart';
 
 import '../../../core/const/app_color.dart';
 import '../../../core/const/text_style.dart';
+import '../models/organizer_model.dart';
+import '../models/schedule_model.dart';
 import '../models/speaker_model.dart';
 import '../models/sponsor_model.dart';
 import '../services/bronze_sponsor_gql_service.dart';
 import '../services/gold_sponsor_gql_service.dart';
 import '../services/organizer_gql_service.dart';
+import '../services/schedule_gql_service.dart';
 import '../services/silver_sponsor_gql_service.dart';
 import '../services/speaker_gql_service.dart';
 import 'tabs/organizer_tab.dart';
@@ -32,6 +34,9 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
   final OrganizerGraphQLService _organizerGraphQLService =
       OrganizerGraphQLService();
   final SpeakerGraphQLService _speakerGraphQLService = SpeakerGraphQLService();
+  final ScheduleGraphQLService _scheduleGraphQLService =
+      ScheduleGraphQLService();
+
   final GoldSponsorGraphQLService _goldSponsorGraphQLService =
       GoldSponsorGraphQLService();
   final SolverSponsorGraphQLService _silverSponsorGraphQLService =
@@ -43,6 +48,8 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
   //
   List<SpeakerModel>? _speakersData;
   //
+  List<ScheduleModel>? _scheduleData;
+  //
   List<SponsorModel>? _goldSponsorsData;
   List<SponsorModel>? _silverSponsorsData;
   List<SponsorModel>? _bronzeSponsorsData;
@@ -53,6 +60,7 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
     log('conferenceId: ${widget.conferenceId}');
     _loadOrganizersData();
     _loadSpeakersData();
+    _loadSchedulesData();
     _loadGoldSponsorsData();
     _loadSilverSponsorsData();
     _loadBronzeSponsorsData();
@@ -69,6 +77,13 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
     _speakersData = null;
     _speakersData =
         await _speakerGraphQLService.getConference(widget.conferenceId);
+    setState(() {});
+  }
+
+  Future<void> _loadSchedulesData() async {
+    _scheduleData = null;
+    _scheduleData =
+        await _scheduleGraphQLService.getConference(widget.conferenceId);
     setState(() {});
   }
 
@@ -97,7 +112,7 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
-      initialIndex: 0,
+      initialIndex: 2,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -153,8 +168,8 @@ class _ConferenceDetailPageState extends State<ConferenceDetailPage> {
                   : TabBarView(
                       children: [
                         OrganizerTab(organizerQData: _organizerData),
-                        Speaker(queryData: _speakersData),
-                        ScheduleTab(),
+                        Speaker(speakerQData: _speakersData),
+                        ScheduleTab(scheduleQData: _scheduleData),
                         SponsorTab(
                           goldSponsorQData: _goldSponsorsData,
                           silverSponsorQData: _silverSponsorsData,

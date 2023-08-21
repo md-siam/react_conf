@@ -4,14 +4,14 @@ import '../../models/speaker_model.dart';
 import '../../widgets/speaker_card.dart';
 
 class Speaker extends StatelessWidget {
-  final List<SpeakerModel>? queryData;
-  const Speaker({Key? key, this.queryData}) : super(key: key);
+  final List<SpeakerModel>? speakerQData;
+  const Speaker({Key? key, this.speakerQData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24).copyWith(top: 15, bottom: 0),
-      child: queryData == null || queryData!.isEmpty
+      child: speakerQData == null || speakerQData!.isEmpty
           ? const Center(
               child: Text(
                 'No information available..!',
@@ -22,20 +22,20 @@ class Speaker extends StatelessWidget {
               ),
             )
           : ListView.separated(
-              itemCount: queryData!.length,
+              itemCount: speakerQData!.length,
               physics: const BouncingScrollPhysics(),
               separatorBuilder: (BuildContext context, int index) {
                 return const SizedBox(height: 20);
               },
               itemBuilder: (BuildContext context, int index) {
                 return SpeakerCard(
-                  imageLink: queryData![index].image.url!,
-                  speakersName: queryData![index].name,
-                  twitterUrl: queryData![index].social.twitter,
-                  linkedInUrl: queryData![index].social.linkedin,
-                  homepageUrl: queryData![index].social.homepage,
-                  githubUrl: queryData![index].social.github,
-                  about: queryData![0].about,
+                  imageLink: speakerQData![index].image.url!,
+                  speakersName: speakerQData![index].name,
+                  twitterUrl: speakerQData![index].social.twitter,
+                  linkedInUrl: speakerQData![index].social.linkedin,
+                  homepageUrl: speakerQData![index].social.homepage,
+                  githubUrl: speakerQData![index].social.github,
+                  about: speakerQData![0].about,
                 );
               },
             ),
