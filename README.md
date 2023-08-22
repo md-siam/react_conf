@@ -36,7 +36,7 @@ intl: ^0.18.1
 
 ## App Demo
 
-<p align="center"><img src="screenshots/gif/app_demo.gif"></p>
+<p align="center"><img src="screenshots/gif/application_demo.gif"></p>
 
 ## GraphQL Queries Used
 
