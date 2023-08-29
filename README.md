@@ -80,6 +80,12 @@ fragment SponsorFragment on Contact {
 }
 ```
 
+```graphql
+{
+  "conferenceId": "future-frontend-2023"
+}
+```
+
 - **For fetching Speakers's details using the 'conferenceId':**
 
 ```graphql
@@ -105,6 +111,12 @@ query PageQuery($conferenceId: ID!) {
 }
 ```
 
+```graphql
+{
+  "conferenceId": "future-frontend-2023"
+}
+```
+
 - **For fetching Schedule details using the 'conferenceId':**
 
 ```graphql
@@ -125,6 +137,12 @@ query PageQuery($conferenceId: ID!) {
       }
     }
   }
+}
+```
+
+```graphql
+{
+  "conferenceId": "future-frontend-2023"
 }
 ```
 
@@ -154,6 +172,12 @@ fragment SponsorFragment on Contact {
   image {
     url
   }
+}
+```
+
+```graphql
+{
+  "conferenceId": "future-frontend-2023"
 }
 ```
 
